@@ -1,0 +1,69 @@
+CREATE TABLE pelanggan(
+id CHAR(20) NOT NULL,
+nama VARCHAR(50) NOT NULL,
+alamat TEXT NOT NULL,
+telp VARCHAR(20) NOT NULL,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE barang(
+id CHAR(20) NOT NULL,
+nama VARCHAR(50) NOT NULL,
+harga INT(7) NOT NULL,
+stok INT(4) NOT NULL,
+satuan VARCHAR(20) NOT NULL,
+barcode VARCHAR(20)
+);
+
+CREATE TABLE akun(
+id CHAR(15) NOT NULL,
+nama VARCHAR(50) NOT NULL,
+password VARCHAR(100) NOT NULL,
+jenis VARCHAR(50) NOT NULL,
+status INT(1) NOT NULL,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE barang_masuk(
+faktur VARCHAR(50) NOT NULL,
+keterangan TEXT NOT NULL,
+tgl DATETIME NOT NULL,
+id_akun CHAR(15) NOT NULL,
+PRIMARY KEY(faktur)
+);
+
+CREATE TABLE detail_barang_masuk(
+id VARCHAR(20) NOT NULL,
+faktur VARCHAR(50) NOT NULL,
+id_barang CHAR(20) NOT NULL,
+nama VARCHAR(50) NOT NULL,
+jumlah INT(7) NOT NULL,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE keranjang(
+id CHAR(20) NOT NULL,
+id_barang CHAR(20) NOT NULL,
+jumlah INT(7) NOT NULL,
+id_akun CHAR(15) NOT NULL,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE transaksi(
+nota CHAR(20) NOT NULL,
+id_pelanggan CHAR(20) NOT NULL,
+tgl DATETIME NOT NULL,
+id_akun CHAR(15) NOT NULL,
+PRIMARY KEY(nota)
+);
+
+CREATE TABLE detail_transaksi(
+id CHAR(20) NOT NULL,
+nota CHAR(20) NOT NULL,
+id_barang CHAR(20) NOT NULL,
+nama VARCHAR(50) NOT NULL,
+harga INT(7) NOT NULL,
+jumlah INT(7) NOT NULL,
+satuan VARCHAR(20) NOT NULL,
+PRIMARY KEY(id)
+);
